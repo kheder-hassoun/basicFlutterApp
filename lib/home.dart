@@ -6,6 +6,8 @@ import 'components/drawer_containt.dart';
 import 'setting/globalvariable.dart';
 import 'mywidgets/mycard.dart';
 import 'package:provider/provider.dart';
+import 'package:curved_labeled_navigation_bar/curved_navigation_bar.dart';
+import 'package:curved_labeled_navigation_bar/curved_navigation_bar_item.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -62,10 +64,7 @@ class _HomeState extends State<Home> {
         child: SafeArea(
           top: false,
           child: Scaffold(
-              drawer: Drawer(
-                width: screenWidth * 0.7,
-                child: DrawerContaint(),
-              ),
+              drawer: DrawerContaint(),
               appBar: AppBar(
                 backgroundColor: colorProvider.themelevel1,
                 foregroundColor: colorProvider.textcolor,
@@ -73,6 +72,25 @@ class _HomeState extends State<Home> {
                 shadowColor: colorProvider.backgroundlevel3,
                 title: const Text('Home'),
               ),
+              bottomNavigationBar: CurvedNavigationBar(
+                  color: colorProvider.themelevel1,
+                  buttonBackgroundColor: colorProvider.themelevel1,
+                  backgroundColor: colorProvider.backgroundlevel1,
+                  height: 65,
+                  items: const [
+                    CurvedNavigationBarItem(
+                      child: Icon(Icons.home_outlined),
+                      label: 'Home',
+                    ),
+                    CurvedNavigationBarItem(
+                      child: Icon(Icons.favorite),
+                      label: 'Love',
+                    ),
+                    CurvedNavigationBarItem(
+                      child: Icon(Icons.person_2_outlined),
+                      label: 'About',
+                    ),
+                  ]),
               body: Container(
                 height: screenHight,
                 width: screenWidth,
@@ -82,12 +100,12 @@ class _HomeState extends State<Home> {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       SizedBox(
-                        height: screenHight * 0.05,
+                        height: screenHight * 0.02,
                       ),
                       ClipRRect(
                         borderRadius: BorderRadius.circular(20),
                         child: SizedBox(
-                          height: screenHight * 0.3,
+                          height: screenHight * 0.25,
                           width: screenWidth * 0.95,
                           child: Image.asset(
                             "assets/images/home.jpg",
@@ -104,15 +122,18 @@ class _HomeState extends State<Home> {
                         children: [
                           MyCard(
                               containt: SmallCard(
-                            path: "assets/images/home.jpg",
-                            text: "dfdsdfd",
+                            path: "assets/images/hadeel.jpg",
+                            text: "hadeel💞",
                           )),
                           MyCard(
                               containt: SmallCard(
-                            path: "assets/images/home.jpg",
-                            text: "dfdsdfd",
+                            path: "assets/images/birthday.jpg",
+                            text: "birthday love",
                           )),
                         ],
+                      ),
+                      SizedBox(
+                        height: screenHight * 0.05,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -120,18 +141,18 @@ class _HomeState extends State<Home> {
                         children: [
                           MyCard(
                               containt: SmallCard(
-                            path: "assets/images/home.jpg",
-                            text: "dfdsdfd",
+                            path: "assets/images/developer.jpg",
+                            text: "About",
                           )),
                           InkWell(
                             onTap: () {
                               Provider.of<ColorProvider>(context, listen: false)
-                                  .changecolor();
+                                  .changetheme();
                             },
                             child: MyCard(
                                 containt: SmallCard(
-                              path: "assets/images/home.jpg",
-                              text: "color",
+                              path: "assets/images/setting.jpg",
+                              text: "Setting",
                             )),
                           ),
                         ],

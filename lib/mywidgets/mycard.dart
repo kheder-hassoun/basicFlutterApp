@@ -24,8 +24,13 @@ class _MyCardState extends State<MyCard> {
     return Card(
         color: colorProvider.backgroundlevel2,
         shape: RoundedRectangleBorder(
-            borderRadius: const BorderRadius.all(Radius.circular(20)),
-            side: BorderSide(color: colorProvider.backgroundlevel3, width: 1)),
+            borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(20),
+              topRight: Radius.circular(20),
+              bottomLeft: Radius.circular(10),
+              bottomRight: Radius.circular(10),
+            ),
+            side: BorderSide(color: colorProvider.themelevel1, width: 0.01)),
         child: Container(
             width: screenWidth * 0.4,
             height: screenHight * 0.2,
@@ -63,7 +68,7 @@ class SmallCard extends StatelessWidget {
         ),
         Text(
           text,
-          style: TextStyle(color: colorProvider.themelevel1),
+          style: TextStyle(fontSize: 17, color: colorProvider.textcolor),
         ),
       ],
     );
